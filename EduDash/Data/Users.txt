@@ -1,0 +1,8 @@
+﻿0,1,74624875,David,admin@test.com,asd123
+1,1,72367884,John,lecturer@test.com,asd123
+2,0,85998583,Can,can@test.com,asd123
+3,0,82367884,asdfal,asdfa@example.com,asdf
+4,0,81657643,asdfa,asdfasdfja@example.com,asdfa
+5,0,88578332,eee,aga@mail.com,asd123
+6,0,85544791,asdfa,asdgas@mail.com,asdas
+7,0,83931968,asda,can@example.com,asd

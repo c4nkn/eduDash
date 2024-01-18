@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/fontawesome-free-6.4.2-web/css/all.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/EduDash.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gluten:wght@600;700&family=Itim&family=Poppins:wght@700;800;900&family=Quicksand:wght@700&family=Schoolbell&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="~/icon.ico" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand mb-0 h1" style="font-family: 'Schoolbell';" asp-area="" asp-page="/Index">EduDash</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    @{
+                        var userEmail = Context.Session.GetString("userEmail");
+                        var userName = Context.Session.GetString("userName");
+                        var userType = Context.Session.GetInt32("userType");
+                        var loginState = bool.Parse(Context.Session.GetString("loginState"));
+                    }
+
+                    <ul class="navbar-nav">
+                        @if (userType == 0)
+                        {
+                            // student nav-bar
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Dashboard">Results</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Calculator">Calculator</a>
+                            </li>
+                        }
+                        else if (userType == 1)
+                        {
+                            // lecturer nav-bar
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Dashboard">Results</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/AddResult">Add Result</a>
+                            </li>
+                        }
+                    </ul>
+                    
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" onclick="return confirm('Are you sure you want to logout?');" asp-page="/Logout">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="text-center text-muted" style="position: absolute; bottom: 10px; width: 100%; white-space: nowrap;">&copy; 2023 - EduDash</footer>
+
+    <script src="https://kit.fontawesome.com/0fd36c0bda.js" crossorigin="anonymous"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

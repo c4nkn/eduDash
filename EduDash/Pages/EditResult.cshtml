@@ -1,0 +1,41 @@
+﻿@page
+@model EduDash.Pages.EditResultModel
+@{
+    ViewData["Title"] = "Edit Result";
+    var userType = HttpContext.Session.GetInt32("userType");
+    var userName = HttpContext.Session.GetString("userName");
+    var studentNumber = HttpContext.Session.GetInt32("studentNumber");
+}
+
+@if (userType == 1)
+{
+    <h2 class="display-5 mt-5">Edit Exam Result</h2>
+    <hr />
+    <div class="container mt-3">
+        <form method="post">
+            <div class="form-group">
+                <label for="courseName">Student Number:</label>
+                <input type="number" class="form-control" min="80000000" max="90000000" id="studentNumber" name="studentNumber" value="@Model.infoData[1]" disabled>
+            </div>
+            <div class="form-group">
+                <label for="courseName">Course Name:</label>
+                <input type="text" class="form-control" id="courseName" name="courseName" value="@Model.infoData[2]" required>
+            </div>
+            <div class="form-group">
+                <label for="lecturer">Lecturer:</label>
+                <input class="form-control" id="lecturer" name="lecturer" type="text" value="@Model.infoData[3]" disabled>
+            </div>
+            <div class="form-group">
+                <label for="examResult">Exam Result:</label><span class="text-danger">@ViewData["resultRange"]</span>
+                <input type="number" class="form-control" min="0" max="100" id="examResult" name="examResult" value="@Model.infoData[4]" required>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3 mb-3">Edit Result</button>
+        </form>
+    </div>
+}
+else
+{
+    <h2 class="display-5">Access denied.</h2>
+}
+
+

@@ -1,0 +1,50 @@
+﻿@page
+@model EduDash.Pages.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "Shared/_LoginRegisterLayout";
+}
+
+<div class="container">
+    <div class="col-md-4 offset-md-4">
+        <h1 class="text-center mt-5">Register</h1>
+        <hr />
+        <form runat="server" method="post" class="needs-validation" novalidate>
+            <div class="form-group mt-3">
+                <label for="userName">Name:</label>
+                <input type="text" class="form-control" id="userName" name="userName" placeholder="ie. Can">
+            </div>
+            <div class="form-group mt-3">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="ie. test@example.com">
+            </div>
+            <div class="form-group mt-3">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="***********">
+            </div>
+            <div class="form-group mt-3">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="***********">
+            </div>
+            <button type="submit" class="btn btn-success btn-block mt-4" style="width: 100%;">Register</button>
+        </form>
+        <hr />
+        <p class="mt-2 text-center">Do you have an account?</p>
+        <a asp-page="/Login" class="btn btn-primary" style="width: 100%;">Login</a>
+        <div class="alert alert-danger alert-dismissible mt-2" style="display: @(Model.invalidForm ? "block" : "none");">
+            <button type="button" id="closeAlertButton" class="btn-close small" data-bs-dismiss="alert" aria-label="Close"></button>
+            @ViewData["blankArea"]
+            @ViewData["doesntMatch"]
+            @ViewData["registeredEmail"]
+                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                <script>
+                     document.addEventListener('DOMContentLoaded', function() {
+                          var closeAlertButton = document.getElementById('closeAlertButton');
+                              closeAlertButton.addEventListener('click', function() {
+                                 $('.alert').fadeOut();
+                          });
+                     });
+                </script>
+        </div>
+    </div>
+</div>

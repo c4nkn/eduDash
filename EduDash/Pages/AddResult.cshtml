@@ -1,0 +1,39 @@
+﻿@page
+@model EduDash.Pages.AddResultModel
+@{
+    ViewData["Title"] = "Add Result";
+    var userType = HttpContext.Session.GetInt32("userType");
+    var userName = HttpContext.Session.GetString("userName");
+}
+
+@if (userType == 1)
+{
+    <h2 class="display-5 mt-5">Add Exam Result</h2>
+    <hr />
+    <div class="container mt-3">
+        <form method="post">
+            <div class="form-group">
+                <label for="courseName">Student Number:</label><span class="text-danger">@ViewData["invalidStudentNo"]</span>
+                <input type="number" min="80000000" max="90000000" class="form-control" id="studentNumber" name="studentNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="courseName">Course Name:</label>
+                <input type="text" class="form-control" id="courseName" name="courseName" required>
+            </div>
+            <div class="form-group">
+                <label for="lecturer">Lecturer:</label>
+                <input class="form-control" id="lecturer" name="lecturer" type="text" placeholder="@userName" disabled>
+            </div>
+            <div class="form-group">
+                <label for="examResult">Exam Result:</label><span class="text-danger">@ViewData["resultRange"]</span>
+                <input type="number" min="0" max="100" class="form-control" id="examResult" name="examResult" required>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3 mb-3">Add Result</button>
+        </form>
+        <b><span class="text-success">@ViewData["addedSuccessfully"]</span></b>
+    </div>
+}
+else
+{
+    <h2 class="display-5">Access denied.</h2>
+}

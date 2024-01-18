@@ -1,0 +1,44 @@
+﻿@page
+@model EduDash.Pages.CalculatorModel
+@{
+    ViewData["Title"] = "Calculator";
+    var userType = HttpContext.Session.GetInt32("userType");
+    var userName = HttpContext.Session.GetString("userName");
+}
+
+@if (userType == 0)
+{
+    <h2 class="display-5 mt-5">Calculator</h2>
+    <p>Calculate average score of your exams.</p>
+    <hr />
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-6">
+                <form method="POST" class="mt-5">
+                    <div class="form-group">
+                        <label for="result1">Result 1:</label>
+                        <input type="number" min="0" max="100" class="form-control" id="result1" name="result1" placeholder="@Model.result1" required>
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="result2">Result 2:</label>
+                        <input type="number" min="0" max="100" class="form-control" id="result2" name="result2" placeholder="@Model.result2" required>
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="result3">Result 3:</label>
+                        <input type="number" min="0" max="100" class="form-control" id="result3" name="result3" placeholder="@Model.result3" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Calculate <i class="fa-solid fa-calculator"></i></button>
+                </form>
+            </div>
+            <div class="col-md-6 mt-5">
+                <p class="display-6 text-center mt-5">Average of results is:</p>
+                <p class="display-5 text-center" style="font-weight: bold;">@Model.averageResult</p>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <h2 class="display-5">Access denied.</h2>
+}
+

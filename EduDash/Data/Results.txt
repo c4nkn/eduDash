@@ -1,0 +1,10 @@
+0,85998583,Data Structures and Algorithms,Lecturer,30
+1,85998583,Data Structures and Algorithms,Lecturer2,80
+2,85998583,Course2,Lecturer3,50
+3,82367884,Data Structures and Algorithms,Lecturer4,85
+4,85998583,Course3,Lecturer5,45
+5,12367451,Data Structures and Algorithms,Lecturer6,78
+6,12367450,Data Structures and Algorithms,Lecturer7,65
+7,12367456,asfa,John,100
+8,85998583,internet programciligi,John,50
+10,12367450,Data Structures and Algorithms,Lecturer7,65
